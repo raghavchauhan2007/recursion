@@ -1,12 +1,19 @@
+import java.util.*;
 public class recursion {
-    public static void printNumb(int n){
-        if(n==0){
+    public static void printSum(int n, int i, int sum){
+        if(n == i){
+            sum += i;
+            System.out.println(sum);
             return;
         }
-        System.out.println(n);
-        printNumb(n-1);
+        sum += i;
+        printSum(n, i+1, sum);
     }
+    
+    
     public static void main(String[] args) {
-        printNumb(5);
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        printSum(n, 1, 0);
     }
 }
