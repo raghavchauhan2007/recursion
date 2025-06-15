@@ -9,7 +9,13 @@ public class recursion {
             return 1;
         }
         
-        return x*calcPower(x, n-1);
+        if(n%2==0){
+            return calcPower(x, n/2)*calcPower(x, n/2);
+        }
+        else{
+            return calcPower(x, n/2)*calcPower(x, n/2)*x;
+        }
+        
     }
 
     public static void main(String[] args) {
