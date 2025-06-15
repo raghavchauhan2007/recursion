@@ -1,21 +1,21 @@
 import java.util.*;
 public class recursion {
     
-    public static void fib(int a, int b, int n){
-        if(n == 0){
-            return;
+    public static int calcPower(int x, int n){
+        if(x == 0 && n == 0){
+            return 0;
         }
-        int c=a+b;
-        System.out.println(c);
-
-        fib(b, c, n-1);
+        if(n == 0){
+            return 1;
+        }
+        
+        return x*calcPower(x, n-1);
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
         int n = sc.nextInt();
-        int a=0, b=1;
-        System.out.println(a);
-        System.out.println(b);
-        fib(0, 1, n-2);
+        System.out.println(calcPower(x, n));
     }
 }
