@@ -1,28 +1,30 @@
 import java.util.*;
 public class recursion {
 
-public static void sortX(String str, int idx, int count, String newString){
-    if(idx == str.length()){
-        for(int i=0; i<count; i++){
-            newString+='x';
+    public static boolean [] map = new boolean[26];
+
+    public static void removeDuplicates(String str, int idx, String newString){
+        
+        if(idx==str.length()){
+            System.out.println(newString);
+            return;
         }
-        System.out.println(newString);
-        return;
+
+        char currChar=str.charAt(idx);
+        if(map[currChar-'a']){
+            removeDuplicates(str, idx+1, newString);
+        }
+        else{
+            newString+=currChar;
+            map[currChar-'a']=true;
+            removeDuplicates(str, idx+1, newString);
+        }
     }
-    
-    if(str.charAt(idx) == 'x'){
-        count++;
-        sortX(str, idx+1, count, newString);
-    }
-    else{
-        newString+=str.charAt(idx);
-        sortX(str, idx+1, count, newString);
-    }
-}
 
     public static void main(String[] args) {
         // Scanner sc = new Scanner(System.in);
         // int n = sc.nextInt();
-        sortX("acxcbfhgxfxxfcgfxxfxfzdxf", 0, 0, "");
+
+        removeDuplicates("abccda", 0, "");
     }
 }
