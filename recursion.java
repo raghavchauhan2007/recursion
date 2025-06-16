@@ -1,22 +1,28 @@
 import java.util.*;
 public class recursion {
 
-public static boolean isSorted(int arr[], int idx){
-    if(idx == arr.length-1){
-        return true; 
+public static void sortX(String str, int idx, int count, String newString){
+    if(idx == str.length()){
+        for(int i=0; i<count; i++){
+            newString+='x';
+        }
+        System.out.println(newString);
+        return;
     }
-    if(arr[idx]>arr[idx+1]){
-        return false;
+    
+    if(str.charAt(idx) == 'x'){
+        count++;
+        sortX(str, idx+1, count, newString);
     }
     else{
-        return isSorted(arr, idx+1);
+        newString+=str.charAt(idx);
+        sortX(str, idx+1, count, newString);
     }
 }
 
     public static void main(String[] args) {
         // Scanner sc = new Scanner(System.in);
         // int n = sc.nextInt();
-        int [] r={1,2,3,4,5};
-        System.out.println(isSorted(r, 0));
+        sortX("acxcbfhgxfxxfcgfxxfxfzdxf", 0, 0, "");
     }
 }
