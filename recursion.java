@@ -1,30 +1,22 @@
 import java.util.*;
 public class recursion {
-    public static int first=-1;
-    public static int last=-1;
-    
-public static void findOccurance(String str, int idx, char element){
-       if(idx == str.length()){
-        System.out.println(first);
-        System.out.println(last);
-        return;
+
+public static boolean isSorted(int arr[], int idx){
+    if(idx == arr.length-1){
+        return true; 
     }
-    char currChar=str.charAt(idx);
-    if(currChar == element){
-        if(first == -1){
-            first=idx;
-        }
-        else{
-            last=idx;
-        }
+    if(arr[idx]>arr[idx+1]){
+        return false;
     }
-    findOccurance(str, idx+1, element);
+    else{
+        return isSorted(arr, idx+1);
+    }
 }
 
     public static void main(String[] args) {
         // Scanner sc = new Scanner(System.in);
         // int n = sc.nextInt();
-        String r = "raghav";
-        findOccurance(r, 0, 'a');
+        int [] r={1,2,3,4,5};
+        System.out.println(isSorted(r, 0));
     }
 }
