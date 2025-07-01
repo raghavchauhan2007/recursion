@@ -1,30 +1,22 @@
-import java.util.*;
 public class recursion {
+    
+    public static String[] keypad = {".", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz"};
 
-    public static boolean [] map = new boolean[26];
+    public static void printComb(int idx, String str, String combination){
 
-    public static void removeDuplicates(String str, int idx, String newString){
-        
         if(idx==str.length()){
-            System.out.println(newString);
+            System.out.println(combination);
             return;
         }
 
-        char currChar=str.charAt(idx);
-        if(map[currChar-'a']){
-            removeDuplicates(str, idx+1, newString);
-        }
-        else{
-            newString+=currChar;
-            map[currChar-'a']=true;
-            removeDuplicates(str, idx+1, newString);
+        char currchar = str.charAt(idx);
+        String mapping = keypad [currchar - '0'];
+        for(int i=0; i<mapping.length(); i++){
+            printComb(idx+1, str, combination+mapping.charAt(i));
         }
     }
-
     public static void main(String[] args) {
-        // Scanner sc = new Scanner(System.in);
-        // int n = sc.nextInt();
 
-        removeDuplicates("abccda", 0, "");
+        printComb(0, "56821254", "");
     }
 }
